@@ -1,8 +1,5 @@
 import java.text.DecimalFormat;
 
-/**
- * Created by tleyda on 8/29/2015.
- */
 public class VendingMachine {
     public enum CoinType {
         PENNY,
@@ -83,8 +80,6 @@ public class VendingMachine {
                 break;
         }
 
-        DecimalFormat format = new DecimalFormat("0.00");
-
-        return format.format( balance );
+        return getDisplay();
     }
 }
