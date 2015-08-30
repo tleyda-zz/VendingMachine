@@ -28,4 +28,12 @@ public class VendingMachineTest {
         assertEquals( true, machine.isValidCoin(VendingMachine.CoinType.DIME));
         assertEquals( true, machine.isValidCoin(VendingMachine.CoinType.QUARTER));
     }
+
+    @Test
+    public void vendingMachineAddsValidCoinsValuetoBalance() {
+        VendingMachine machine = new VendingMachine();
+        assertEquals( "0.05", machine.AddCoin( VendingMachine.CoinType.NICKEL));
+        assertEquals( "0.15", machine.AddCoin( VendingMachine.CoinType.DIME));
+        assertEquals( "0.40", machine.AddCoin( VendingMachine.CoinType.QUARTER));
+    }
 }

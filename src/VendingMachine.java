@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 /**
  * Created by tleyda on 8/29/2015.
  */
@@ -8,6 +10,12 @@ public class VendingMachine {
         DIME,
         QUARTER,
         UNKNOWN_COIN
+    }
+
+    private Float balance;
+
+    public VendingMachine() {
+        balance = 0.0f;
     }
 
     public String getDisplay() {
@@ -39,4 +47,26 @@ public class VendingMachine {
         return true;
     }
 
+    public String AddCoin(CoinType coin) {
+        switch (coin) {
+            case NICKEL:
+                balance += 0.05f;
+                break;
+
+            case DIME:
+                balance += 0.10f;
+                break;
+
+            case QUARTER:
+                balance += 0.25f;
+                break;
+
+            default:
+                break;
+        }
+
+        DecimalFormat format = new DecimalFormat("0.00");
+
+        return format.format( balance );
+    }
 }
