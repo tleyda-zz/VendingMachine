@@ -18,4 +18,14 @@ public class VendingMachineTest {
         assertEquals( VendingMachine.CoinType.DIME, machine.detectCoin(4));
         assertEquals( VendingMachine.CoinType.QUARTER, machine.detectCoin(19));
     }
+
+    @Test
+    public void vendingMachineIdentifiesValidCoins() {
+        VendingMachine machine = new VendingMachine();
+        assertEquals( false, machine.isValidCoin(VendingMachine.CoinType.UNKNOWN_COIN));
+        assertEquals( false, machine.isValidCoin(VendingMachine.CoinType.PENNY));
+        assertEquals( true, machine.isValidCoin(VendingMachine.CoinType.NICKEL));
+        assertEquals( true, machine.isValidCoin(VendingMachine.CoinType.DIME));
+        assertEquals( true, machine.isValidCoin(VendingMachine.CoinType.QUARTER));
+    }
 }

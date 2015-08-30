@@ -31,4 +31,12 @@ public class VendingMachine {
 
         return CoinType.UNKNOWN_COIN;
     }
+
+    public boolean isValidCoin(CoinType coin) {
+        if ((coin == CoinType.UNKNOWN_COIN) || (coin == CoinType.PENNY))
+            return false;
+
+        return true;
+    }
+
 }
