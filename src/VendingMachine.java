@@ -19,7 +19,25 @@ public class VendingMachine {
     }
 
     public String getDisplay() {
+
+        if( balance > 0.0f ) {
+            DecimalFormat format = new DecimalFormat("0.00");
+
+            return format.format( balance );
+        }
+
         return "INSERT COIN";
+    }
+
+    public boolean insertCoin(Integer coinWeight) {
+        CoinType coin = detectCoin(coinWeight);
+
+        if( isValidCoin(coin)) {
+            AddCoin(coin);
+            return true;
+        }
+
+        return false;
     }
 
     public CoinType detectCoin(Integer coinWeight) {
