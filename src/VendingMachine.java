@@ -28,6 +28,7 @@ public class VendingMachine {
 
     public String getDisplay() {
         String display = null;
+        DecimalFormat format = new DecimalFormat("0.00");
 
         switch ( displayState ) {
             case INSERT_COINS:
@@ -35,13 +36,10 @@ public class VendingMachine {
                 break;
 
             case PRICE:
-                DecimalFormat priceFormat = new DecimalFormat("0.00");
-                display = "PRICE " + priceFormat.format(price);
+                display = "PRICE " + format.format(price);
                 break;
 
             case BALANCE:
-                DecimalFormat format = new DecimalFormat("0.00");
-
                 display = format.format( balance );
                 break;
         }
