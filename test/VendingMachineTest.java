@@ -66,6 +66,10 @@ public class VendingMachineTest {
     @Test
     public void vendingMachineDisplaysPriceWhenNotEnoughMoneyDepositedAndButtonPressed() {
         machine.buttonPress(VendingMachine.ButtonType.COLA);
-        assertEquals("PRICE", machine.getDisplay());
+        assertEquals("PRICE 1.00", machine.getDisplay());
+        machine.buttonPress(VendingMachine.ButtonType.CHIPS);
+        assertEquals("PRICE 0.50", machine.getDisplay());
+        machine.buttonPress(VendingMachine.ButtonType.CANDY);
+        assertEquals("PRICE 0.65", machine.getDisplay());
     }
 }

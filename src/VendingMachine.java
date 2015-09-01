@@ -16,11 +16,13 @@ public class VendingMachine {
     }
 
     private Float balance;
+    private Float price;
     private DisplayState displayState;
 
     public VendingMachine() {
 
         balance = 0.0f;
+        price = 0.0f;
         displayState = DisplayState.INSERT_COINS;
     }
 
@@ -33,7 +35,8 @@ public class VendingMachine {
                 break;
 
             case PRICE:
-                display = "PRICE";
+                DecimalFormat priceFormat = new DecimalFormat("0.00");
+                display = "PRICE " + priceFormat.format(price);
                 break;
 
             case BALANCE:
@@ -113,8 +116,6 @@ public class VendingMachine {
     }
 
     public String buttonPress(ButtonType button) {
-        Float price = 0.0f;
-
         switch( button ) {
             case COLA:
                 price = 1.0f;
