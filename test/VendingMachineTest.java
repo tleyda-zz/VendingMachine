@@ -87,8 +87,17 @@ public class VendingMachineTest {
     @Test
     public void vendingMachineDisplaysThankYouIfEnoughMoneyDepositedForProduct() {
         machine.AddCoin(VendingMachine.CoinType.QUARTER );
+        machine.AddCoin(VendingMachine.CoinType.QUARTER);
+        machine.buttonPress(VendingMachine.ButtonType.CHIPS);
+        assertEquals( "THANK YOU", machine.getDisplay());
+    }
+
+    @Test
+    public void vendingMachineDisplaysInsertCoinsAfterThankYouIfEnoughMoneyDepositedForProduct() {
+        machine.AddCoin(VendingMachine.CoinType.QUARTER );
         machine.AddCoin(VendingMachine.CoinType.QUARTER );
         machine.buttonPress(VendingMachine.ButtonType.CHIPS);
         assertEquals( "THANK YOU", machine.getDisplay());
+        assertEquals( "INSERT COINS", machine.getDisplay());
     }
 }

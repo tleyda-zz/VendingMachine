@@ -52,6 +52,7 @@ public class VendingMachine {
 
             case THANK_YOU:
                 display = "THANK YOU";
+                displayState = DisplayState.INSERT_COINS;
                 break;
         }
 
@@ -144,6 +145,7 @@ public class VendingMachine {
         }
         else {
             displayState = DisplayState.THANK_YOU;
+            balance = 0.0f;
         }
 
         DecimalFormat format = new DecimalFormat("0.00");
