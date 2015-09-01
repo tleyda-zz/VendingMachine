@@ -9,21 +9,41 @@ public class VendingMachine {
         UNKNOWN_COIN
     }
 
+    public enum DisplayState {
+        INSERT_COINS,
+        BALANCE,
+        PRICE
+    }
+
     private Float balance;
+    private DisplayState displayState;
 
     public VendingMachine() {
+
         balance = 0.0f;
+        displayState = DisplayState.INSERT_COINS;
     }
 
     public String getDisplay() {
+        String display = null;
 
-        if( balance > 0.0f ) {
-            DecimalFormat format = new DecimalFormat("0.00");
+        switch ( displayState ) {
+            case INSERT_COINS:
+                display = "INSERT COINS";
+                break;
 
-            return format.format( balance );
+            case PRICE:
+                display = "PRICE";
+                break;
+
+            case BALANCE:
+                DecimalFormat format = new DecimalFormat("0.00");
+
+                display = format.format( balance );
+                break;
         }
 
-        return "INSERT COIN";
+        return display;
     }
 
     public boolean insertCoin(Integer coinWeight) {
@@ -65,14 +85,17 @@ public class VendingMachine {
     public String AddCoin(CoinType coin) {
         switch (coin) {
             case NICKEL:
+                displayState = DisplayState.BALANCE;
                 balance += 0.05f;
                 break;
 
             case DIME:
+                displayState = DisplayState.BALANCE;
                 balance += 0.10f;
                 break;
 
             case QUARTER:
+                displayState = DisplayState.BALANCE;
                 balance += 0.25f;
                 break;
 
@@ -104,6 +127,10 @@ public class VendingMachine {
             case CANDY:
                 price = 0.65f;
                 break;
+        }
+
+        if( price > balance ) {
+            displayState = DisplayState.PRICE;
         }
 
         DecimalFormat format = new DecimalFormat("0.00");
