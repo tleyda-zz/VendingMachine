@@ -82,4 +82,32 @@ public class VendingMachine {
 
         return getDisplay();
     }
+
+    public enum ButtonType {
+        COLA,
+        CHIPS,
+        CANDY
+    }
+
+    public String buttonPress(ButtonType button) {
+        Float price = 0.0f;
+
+        switch( button ) {
+            case COLA:
+                price = 1.0f;
+                break;
+
+            case CHIPS:
+                price = 0.5f;
+                break;
+
+            case CANDY:
+                price = 0.65f;
+                break;
+        }
+
+        DecimalFormat format = new DecimalFormat("0.00");
+
+        return format.format( price );
+    }
 }
