@@ -37,6 +37,12 @@ public class VendingMachine {
 
             case PRICE:
                 display = "PRICE " + format.format(price);
+                if ( balance > 0.0f ) {
+                    displayState = DisplayState.BALANCE;
+                }
+                else {
+                    displayState = DisplayState.INSERT_COINS;
+                }
                 break;
 
             case BALANCE:

@@ -72,4 +72,15 @@ public class VendingMachineTest {
         machine.buttonPress(VendingMachine.ButtonType.CANDY);
         assertEquals("PRICE 0.65", machine.getDisplay());
     }
+
+    @Test
+    public void vendingMachineDisplaysInsertCoinsAndBalanceAfterDisplayingPrice() {
+        machine.buttonPress(VendingMachine.ButtonType.COLA);
+        assertEquals("PRICE 1.00", machine.getDisplay());
+        assertEquals("INSERT COINS", machine.getDisplay());
+        machine.AddCoin(VendingMachine.CoinType.QUARTER);
+        machine.buttonPress(VendingMachine.ButtonType.COLA);
+        assertEquals("PRICE 1.00", machine.getDisplay());
+        assertEquals("0.25", machine.getDisplay());
+    }
 }
