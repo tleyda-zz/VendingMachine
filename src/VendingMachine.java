@@ -12,7 +12,8 @@ public class VendingMachine {
     public enum DisplayState {
         INSERT_COINS,
         BALANCE,
-        PRICE
+        PRICE,
+        THANK_YOU
     }
 
     private Float balance;
@@ -47,6 +48,10 @@ public class VendingMachine {
 
             case BALANCE:
                 display = format.format( balance );
+                break;
+
+            case THANK_YOU:
+                display = "THANK YOU";
                 break;
         }
 
@@ -136,6 +141,9 @@ public class VendingMachine {
 
         if( price > balance ) {
             displayState = DisplayState.PRICE;
+        }
+        else {
+            displayState = DisplayState.THANK_YOU;
         }
 
         DecimalFormat format = new DecimalFormat("0.00");

@@ -83,4 +83,12 @@ public class VendingMachineTest {
         assertEquals("PRICE 1.00", machine.getDisplay());
         assertEquals("0.25", machine.getDisplay());
     }
+
+    @Test
+    public void vendingMachineDisplaysThankYouIfEnoughMoneyDepositedForProduct() {
+        machine.AddCoin(VendingMachine.CoinType.QUARTER );
+        machine.AddCoin(VendingMachine.CoinType.QUARTER );
+        machine.buttonPress(VendingMachine.ButtonType.CHIPS);
+        assertEquals( "THANK YOU", machine.getDisplay());
+    }
 }
